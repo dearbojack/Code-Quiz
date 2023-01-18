@@ -4,7 +4,7 @@ function printScores() {
 
     var highscores = document.getElementById('highscores');
 
-    var scoreRecords = document.createElement('li');
+    
 
     var keys = Object.keys(localStorage);
 
@@ -15,12 +15,15 @@ function printScores() {
 
     // print and show
     for (var i = 0; i < keys.length; i++) {
+        // the createElment should be in the for loop or it only creates 1 records TT
+        var scoreRecords = document.createElement('li');
+        
         scoreRecords.innerHTML = keys[i] + ' - ' + localStorage[keys[i]];
         highscores.appendChild(scoreRecords);
     };
 };
 
-printScores();
+// printScores();
 
 
 // clear localStorage when click the buttion clear

@@ -158,6 +158,7 @@ submitBtn.addEventListener('click', function() {
     var initials = document.getElementById("initials").value;
     localStorage.setItem(initials, userScore);
     window.location.href = 'highscores.html';
+    printScores();
 });
 
 
