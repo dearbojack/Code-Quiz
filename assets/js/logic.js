@@ -74,11 +74,13 @@ function qDisplay(index) {
                 };
                 // play audio
                 wrongAudio.play();
+                // show feedback
                 showFeedback('wrong');
 
                 console.log("ohno");
                 console.log(e.target.innerText);
                 console.log(index);
+                // load next question
                 nextQestion(index);
             };
         });
@@ -95,6 +97,7 @@ var feedback = document.getElementById('feedback');
 function showFeedback(str) {
     var msg = document.createElement('p');
 
+    // diff feedback msg
     if (str === 'right') {
         msg.innerText = 'Correct!';
     } else if (str === 'wrong') {
@@ -102,10 +105,10 @@ function showFeedback(str) {
     } else {
         return;
     };
-
-    feedback.className = 'feedback';
+    // append feedback msg
     feedback.appendChild(msg);
-    
+    // remove class hide (show the feedback)
+    feedback.className = 'feedback';
 };
 
 function nextQestion(index) {
@@ -156,7 +159,9 @@ var submitBtn = document.getElementById('submit')
 
 submitBtn.addEventListener('click', function() {
     var initials = document.getElementById("initials").value;
+    // store key value in localStorage
     localStorage.setItem(initials, userScore);
+    // jump to scores page
     window.location.href = 'highscores.html';
     printScores();
 });
