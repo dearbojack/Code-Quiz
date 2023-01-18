@@ -40,13 +40,20 @@ function qDisplay(index) {
         listItem.innerHTML = quizQuestions[index].choices[i];
         document.getElementById("choices").appendChild(listItem); 
 
+
         listItem.addEventListener('click', function(e) {
             if (e.target.innerText === quizQuestions[index].correctAnswer) {
+                // if answer is correct
+                userScore++ ;
+
                 console.log("ohye");
                 console.log(e.target.innerText);
                 console.log(index);
                 nextQestion(index);
             } else {
+                // if answer is wrong
+                time = time - 10;
+
                 console.log("ohno");
                 console.log(e.target.innerText);
                 console.log(index);
@@ -61,10 +68,31 @@ function qDisplay(index) {
 };
 
 function nextQestion(index) {
-    index++ ;
-    document.getElementById("choices").innerHTML = '';
-    qDisplay(index);
-}
+    
+    if (index < quizQuestions.length - 1) {
+        // move on to next index
+        index++ ;
+        // clear previous choices
+        document.getElementById("choices").innerHTML = '';
+        // go to next q if there is any
+        qDisplay(index);
+    } else {
+        // clear the timer
+        time = 1;
+        // show the result
+        showEndScreen();
+        console.log('ending');
+    };
+
+};
+
+function showEndScreen() {
+    document.getElementById("questions").className = "hide";
+    document.getElementById("choices").className = "hide";
+
+    document.getElementById("end-screen").className = "";
+    document.getElementById("final-score").innerHTML = userScore;
+};
 
 // listen to click on the start button
 document.getElementById('start').addEventListener("click", function(){
