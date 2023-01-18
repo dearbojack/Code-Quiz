@@ -46,7 +46,7 @@ function qDisplay(index) {
     document.getElementById("question-title").innerHTML = quizQuestions[index].question;
 
     for (let i = 0; i < quizQuestions[index].choices.length; i++) {
-        let buttons = document.createElement('button');
+        // let buttons = document.createElement('button');
         let listItem = document.createElement('li');
         listItem.innerHTML = quizQuestions[index].choices[i];
         document.getElementById("choices").appendChild(listItem); 
