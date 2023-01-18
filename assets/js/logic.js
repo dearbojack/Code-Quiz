@@ -26,41 +26,59 @@ var index = 0;
 // random the question order
 quizQuestions.sort(() => Math.random() - 0.5);
 
-document.getElementById('start').addEventListener("click", function(){
+// func to display questions
 
-    countDown(time);
-    
+function qDisplay(index) {
     document.getElementById("start-screen").className ="hide";
     document.getElementById("questions").className ="";
     document.getElementById("question-title").innerHTML = quizQuestions[index].question;
 
-    
     let list = document.createElement('ul');
     
     for (let i = 0; i < quizQuestions[index].choices.length; i++) {
-
-        let listItem = document.createElement('li');
+        let listItem = document.createElement('button');
         listItem.innerHTML = quizQuestions[index].choices[i];
         list.appendChild(listItem);
         document.getElementById("choices").appendChild(list);
-
-        // check if the answer is correct
-        listItem.addEventListener("click", function() {
-            if(quizQuestions[index].choices[i] === quizQuestions[index].correctAnswer) {
-                userScore++;
-                console.log("Your score is " + userScore);
-            } else {
-
-                // if wrong, time - 10s
-                time = time - 10;
-                console.log(time);
-            };   
-        });
-
     };
+}
+
+document.getElementById('start').addEventListener("click", function(){
+
+    countDown(time);
+    qDisplay(index);
+    index++;
+    // document.getElementById("start-screen").className ="hide";
+    // document.getElementById("questions").className ="";
+    // document.getElementById("question-title").innerHTML = quizQuestions[index].question;
+
+    
+    // let list = document.createElement('ul');
+    
+    // for (let i = 0; i < quizQuestions[index].choices.length; i++) {
+
+    //     let listItem = document.createElement('button');
+    //     listItem.innerHTML = quizQuestions[index].choices[i];
+    //     list.appendChild(listItem);
+    //     document.getElementById("choices").appendChild(list);
+
+    //     // check if the answer is correct
+    //     listItem.addEventListener("click", function() {
+    //         if(quizQuestions[index].choices[i] === quizQuestions[index].correctAnswer) {
+    //             userScore++;
+    //             console.log("Your score is " + userScore);
+    //         } else {
+
+    //             // if wrong, time - 10s
+    //             time = time - 10;
+    //             console.log(time);
+    //         };   
+        // });
+
+    // };
 
 
 
 
-    index ++;
+    // index ++;
 });

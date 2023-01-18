@@ -16,8 +16,8 @@ const quizQuestions = [
     },
     {
       question: "How do you make a list that lists the items with numbers?",
-      choices: ["<ul>", "<ol>", "<list>", "<li>"],
-      correctAnswer: "<ol>"
+      choices: ["ul", "ol", "list", "li"],
+      correctAnswer: "ol"
     },
     {
       question: "How do you select an element with id 'demo'?",
@@ -26,8 +26,8 @@ const quizQuestions = [
     },
     {
       question: "What is the correct HTML tag for creating a hyperlink?",
-      choices: ["<a>", "<p>", "<em>", "<s>"],
-      correctAnswer: "<a>"
+      choices: ["a", "p", "em", "s"],
+      correctAnswer: "a"
     },
     {
       question: "What is the most popular front-end web development language for mobile development?",
