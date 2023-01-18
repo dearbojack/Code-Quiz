@@ -35,14 +35,28 @@ document.getElementById('start').addEventListener("click", function(){
     document.getElementById("question-title").innerHTML = quizQuestions[index].question;
 
     
-    let list = document.createElement('ol');
+    let list = document.createElement('ul');
     
     for (let i = 0; i < quizQuestions[index].choices.length; i++) {
+
         let listItem = document.createElement('li');
-        listItem.appendChild(document.createTextNode(quizQuestions[index].choices[i]));
+        listItem.innerHTML = quizQuestions[index].choices[i];
         list.appendChild(listItem);
         document.getElementById("choices").appendChild(list);
-    }
+
+        // check if the answer is correct
+        listItem.addEventListener("click", function() {
+            if(quizQuestions[index].choices[i] === quizQuestions[index].correctAnswer) {
+                console.log("ohye");
+            } else {
+                console.log("ohno");
+            };   
+        });
+
+    };
+
+
+
 
     index ++;
 });
