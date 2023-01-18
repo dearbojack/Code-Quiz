@@ -88,7 +88,7 @@ function qDisplay(index) {
     document.getElementById("choices").appendChild(list);
 };
 
-// TODO needs to show feedback after user answer
+// show feedback after user answer
 var feedback = document.getElementById('feedback');
 
 function showFeedback(str) {
