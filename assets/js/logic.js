@@ -78,8 +78,13 @@ function qDisplay(index) {
     document.getElementById("choices").appendChild(list);
 };
 
+// TODO needs to show feedback after user answer
+function showFeedback() {
+
+};
+
 function nextQestion(index) {
-    
+    // ! need to fix, eithor when questions or time run out
     if (index < quizQuestions.length - 1) {
         // move on to next index
         index++ ;
@@ -119,6 +124,12 @@ document.getElementById('start').addEventListener("click", function(){
     document.getElementById("questions").className ="";
 });
 
+// when click the submit button, save the name and score
+var submitBtn = document.getElementById('submit')
+var initials = document.getElementById("initials").value;
 
+submitBtn.addEventListener('click', function() {
+    localStorage.setItem(initials, userScore);
+});
 
 
