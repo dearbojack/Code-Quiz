@@ -1,6 +1,6 @@
-function printScores() {
+var highscores = document.getElementById('highscores');
 
-    var highscores = document.getElementById('highscores');
+function printScores() {
 
     var keys = Object.keys(localStorage);
 
@@ -26,4 +26,6 @@ var clearBtn = document.getElementById('clear')
 
 clearBtn.addEventListener('click', function() {
     localStorage.clear();
+    // after clear, also clear the page
+    highscores.innerHTML = "";
 });
