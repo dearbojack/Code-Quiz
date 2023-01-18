@@ -34,7 +34,7 @@ function countDown() {
 var index = 0;
 
 // create an ul to hold the choices
-const list = document.createElement('ul');
+const list = document.createElement('ol');
 list.setAttribute('id', 'list');
 
 // random the question order
@@ -46,6 +46,7 @@ function qDisplay(index) {
     document.getElementById("question-title").innerHTML = quizQuestions[index].question;
 
     for (let i = 0; i < quizQuestions[index].choices.length; i++) {
+        let buttons = document.createElement('button');
         let listItem = document.createElement('li');
         listItem.innerHTML = quizQuestions[index].choices[i];
         document.getElementById("choices").appendChild(listItem); 
@@ -152,9 +153,9 @@ document.getElementById('start').addEventListener("click", function(){
 
 // when click the submit button, save the name and score
 var submitBtn = document.getElementById('submit')
-var initials = document.getElementById("initials").value;
 
 submitBtn.addEventListener('click', function() {
+    var initials = document.getElementById("initials").value;
     localStorage.setItem(initials, userScore);
     window.location.href = 'highscores.html';
 });
