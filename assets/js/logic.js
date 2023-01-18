@@ -5,49 +5,44 @@
 // after user click start buttion start the countdown
 var time = 90;
 
-document.getElementById('start').addEventListener("click", function(){
-    let timer = setInterval(function (){
-        time--;
+// document.getElementById('start').addEventListener("click", function(){
+//     let timer = setInterval(function (){
+//         time--;
 
-        // * TODO penalty after wrong answer
+//         // * TODO penalty after wrong answer
 
-        document.getElementById('time').innerHTML = time;
+//         document.getElementById('time').innerHTML = time;
         
-        if (time === 0) {
-            clearInterval(timer);
+//         if (time === 0) {
+//             clearInterval(timer);
 
-            // * TODO display end screen
-        }
-    }, 1000);
-});
-
-
-
-// randomize the arr and loop through it
-
-function randomizer(arr) {
-    var arr = [];
-
-    // randomize the order of the arr
-    arr.sort(() => Math.random() - 0.5);
-
-    // loop through it
-    // display questions
-}
+//             // * TODO display end screen
+//         }
+//     }, 1000);
+// });
 
 // display the questions in quiz format
 
-function questionDisplay () {
-    for (let i = 0; i < quizQuestions.length; i++) {
-        const question = quizQuestions[i].question;
-        const choices = quizQuestions[i].choices;
-        const correctAnswer = quizQuestions[i].correctAnswer;
+var index = 0;
 
-        console.log(question);
-        console.log(choices);
-        console.log(correctAnswer);
-        
+// random the question order
+quizQuestions.sort(() => Math.random() - 0.5);
+
+document.getElementById('start').addEventListener("click", function(){
+    
+    document.getElementById("start-screen").className ="hide";
+    document.getElementById("questions").className ="";
+    document.getElementById("question-title").innerHTML = quizQuestions[index].question;
+
+    
+    let list = document.createElement('ol');
+    
+    for (let i = 0; i < quizQuestions[index].choices.length; i++) {
+        let listItem = document.createElement('li');
+        listItem.appendChild(document.createTextNode(quizQuestions[index].choices[i]));
+        list.appendChild(listItem);
+        document.getElementById("choices").appendChild(list);
     }
-}
 
-questionDisplay();
+    index ++;
+});
