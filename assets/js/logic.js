@@ -54,16 +54,19 @@ function qDisplay(index) {
                 userScore++ ;
                 // play audio
                 correctAudio.play();
+                showFeedback('right');
 
                 console.log("ohye");
                 console.log(e.target.innerText);
                 console.log(index);
                 nextQestion(index);
+
             } else {
                 // if answer is wrong, countdown time -10s
                 time = time - 10;
                 // play audio
                 wrongAudio.play();
+                showFeedback('wrong');
 
                 console.log("ohno");
                 console.log(e.target.innerText);
@@ -79,8 +82,22 @@ function qDisplay(index) {
 };
 
 // TODO needs to show feedback after user answer
-function showFeedback() {
+var feedback = document.getElementById('feedback');
 
+function showFeedback(str) {
+    var msg = document.createElement('p');
+
+    if (str === 'right') {
+        msg.innerText = 'Correct!';
+    } else if (str === 'wrong') {
+        msg.innerText = 'Wrong!';
+    } else {
+        return;
+    };
+
+    feedback.className = 'feedback';
+    feedback.appendChild(msg);
+    
 };
 
 function nextQestion(index) {
@@ -100,6 +117,8 @@ function nextQestion(index) {
         console.log('ending');
     };
 
+    // clear feedback here? after 1s
+    setTimeout(function(){ feedback.innerHTML = ""; }, 1000);
 };
 
 function showEndScreen() {
