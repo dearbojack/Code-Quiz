@@ -33,9 +33,6 @@ function countDown() {
 
 var index = 0;
 
-// create an ul to hold the choices
-const list = document.createElement('ol');
-
 // random the question order
 quizQuestions.sort(() => Math.random() - 0.5);
 
@@ -45,18 +42,20 @@ function qDisplay(index) {
     document.getElementById("question-title").innerHTML = quizQuestions[index].question;
 
     for (let i = 0; i < quizQuestions[index].choices.length; i++) {
-        let listItem = document.createElement('li');
-        listItem.innerHTML = quizQuestions[index].choices[i];
-        document.getElementById("choices").appendChild(listItem); 
+        // put choices into buttions
+        let buttons = document.createElement('button');
+        buttons.innerText = (i+1) + '. ' + quizQuestions[index].choices[i];
+        // append buttons to choices
+        document.getElementById("choices").appendChild(buttons); 
 
-        listItem.addEventListener('click', function(e) {
+        // add event listener to all the buttons (choices)
+        buttons.addEventListener('click', function(e) {
             if (e.target.innerText === quizQuestions[index].correctAnswer) {
                 // if answer is correct, score + 1
                 userScore++ ;
                 // play audio
                 correctAudio.play();
                 showFeedback('right');
-
                 // console.log("ohye");
                 // console.log(e.target.innerText);
                 // console.log(index);
@@ -83,9 +82,6 @@ function qDisplay(index) {
         });
         
     };
-
-    // 
-    document.getElementById("choices").appendChild(list);
 };
 
 // show feedback after user answer
