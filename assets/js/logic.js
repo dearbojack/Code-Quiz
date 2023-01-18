@@ -17,6 +17,9 @@ function countDown() {
         time --;
         document.getElementById("time").innerHTML = time;
         if(time <= 0) {
+            // if time runs out, show end screen
+            time = 0;
+            showEndScreen();
             clearInterval(timer);
             console.log("Time Up!");
         } else {
@@ -63,7 +66,11 @@ function qDisplay(index) {
 
             } else {
                 // if answer is wrong, countdown time -10s
-                time = time - 10;
+                if(time >= 10) {
+                    time = time - 10;
+                } else {
+                    time = 0
+                };
                 // play audio
                 wrongAudio.play();
                 showFeedback('wrong');
