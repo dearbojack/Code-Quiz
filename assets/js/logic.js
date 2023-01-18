@@ -109,8 +109,8 @@ function showFeedback(str) {
 };
 
 function nextQestion(index) {
-    // ! need to fix, eithor when questions or time run out
-    if (index < quizQuestions.length - 1) {
+    // when questions or time run out, show end screen
+    if (time > 0 && index < quizQuestions.length - 1) {
         // move on to next index
         index++ ;
         // clear previous choices
