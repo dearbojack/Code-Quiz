@@ -21,7 +21,7 @@ function countDown() {
             time = 0;
             showEndScreen();
             clearInterval(timer);
-            console.log("Time Up!");
+            // console.log("Time Up!");
         } else {
             // console.log(time);
             return time;
@@ -35,7 +35,6 @@ var index = 0;
 
 // create an ul to hold the choices
 const list = document.createElement('ol');
-list.setAttribute('id', 'list');
 
 // random the question order
 quizQuestions.sort(() => Math.random() - 0.5);
@@ -46,11 +45,9 @@ function qDisplay(index) {
     document.getElementById("question-title").innerHTML = quizQuestions[index].question;
 
     for (let i = 0; i < quizQuestions[index].choices.length; i++) {
-        // let buttons = document.createElement('button');
         let listItem = document.createElement('li');
         listItem.innerHTML = quizQuestions[index].choices[i];
         document.getElementById("choices").appendChild(listItem); 
-
 
         listItem.addEventListener('click', function(e) {
             if (e.target.innerText === quizQuestions[index].correctAnswer) {
@@ -60,9 +57,9 @@ function qDisplay(index) {
                 correctAudio.play();
                 showFeedback('right');
 
-                console.log("ohye");
-                console.log(e.target.innerText);
-                console.log(index);
+                // console.log("ohye");
+                // console.log(e.target.innerText);
+                // console.log(index);
                 nextQestion(index);
 
             } else {
@@ -77,9 +74,9 @@ function qDisplay(index) {
                 // show feedback
                 showFeedback('wrong');
 
-                console.log("ohno");
-                console.log(e.target.innerText);
-                console.log(index);
+                // console.log("ohno");
+                // console.log(e.target.innerText);
+                // console.log(index);
                 // load next question
                 nextQestion(index);
             };
