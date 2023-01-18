@@ -1,6 +1,13 @@
 // user score
 var userScore = 0;
 
+// sound files
+var correctAudio = document.createElement("audio");
+correctAudio.setAttribute('src', 'assets/sfx/correct.wav');
+
+var wrongAudio = document.createElement("audio")
+wrongAudio.setAttribute('src', 'assets/sfx/incorrect.wav');
+
 // countdown time
 var time = 90;
 
@@ -43,16 +50,20 @@ function qDisplay(index) {
 
         listItem.addEventListener('click', function(e) {
             if (e.target.innerText === quizQuestions[index].correctAnswer) {
-                // if answer is correct
+                // if answer is correct, score + 1
                 userScore++ ;
+                // play audio
+                correctAudio.play();
 
                 console.log("ohye");
                 console.log(e.target.innerText);
                 console.log(index);
                 nextQestion(index);
             } else {
-                // if answer is wrong
+                // if answer is wrong, countdown time -10s
                 time = time - 10;
+                // play audio
+                wrongAudio.play();
 
                 console.log("ohno");
                 console.log(e.target.innerText);
@@ -87,9 +98,12 @@ function nextQestion(index) {
 };
 
 function showEndScreen() {
+
+    // hide questions & answers
     document.getElementById("questions").className = "hide";
     document.getElementById("choices").className = "hide";
 
+    // show the end screen and update the score
     document.getElementById("end-screen").className = "";
     document.getElementById("final-score").innerHTML = userScore;
 };
