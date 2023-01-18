@@ -1,14 +1,10 @@
-
-
 function printScores() {
 
     var highscores = document.getElementById('highscores');
 
-    
-
     var keys = Object.keys(localStorage);
 
-    // sort the keys
+    // sort the keys by value descending
     keys.sort(function (a, b) {
         return localStorage[b] - localStorage[a];
     });
@@ -23,8 +19,7 @@ function printScores() {
     };
 };
 
-// printScores();
-
+printScores();
 
 // clear localStorage when click the buttion clear
 var clearBtn = document.getElementById('clear')
