@@ -26,8 +26,8 @@ const quizQuestions = [
     },
     {
       question: "What is the correct HTML tag for creating a hyperlink?",
-      choices: ["<a></a>", "<p></p>", "<em></em>", "<s></s>"],
-      correctAnswer: "<a></a>"
+      choices: ["<a>", "<p>", "<em>", "<s>"],
+      correctAnswer: "<a>"
     },
     {
       question: "What is the most popular front-end web development language for mobile development?",

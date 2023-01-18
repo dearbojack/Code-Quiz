@@ -1,25 +1,23 @@
+// user score
+var userScore = 0;
 
-
-// countdown timer function
-
-// after user click start buttion start the countdown
+// countdown time
 var time = 90;
 
-// document.getElementById('start').addEventListener("click", function(){
-//     let timer = setInterval(function (){
-//         time--;
-
-//         // * TODO penalty after wrong answer
-
-//         document.getElementById('time').innerHTML = time;
-        
-//         if (time === 0) {
-//             clearInterval(timer);
-
-//             // * TODO display end screen
-//         }
-//     }, 1000);
-// });
+// func to count down the time
+function countDown() {
+    let timer = setInterval(function() {
+        time --;
+        document.getElementById("time").innerHTML = time;
+        if(time <= 0) {
+            clearInterval(timer);
+            console.log("Time Up!");
+        } else {
+            // console.log(time);
+            return time;
+        }
+    }, 1000);
+};
 
 // display the questions in quiz format
 
@@ -29,6 +27,8 @@ var index = 0;
 quizQuestions.sort(() => Math.random() - 0.5);
 
 document.getElementById('start').addEventListener("click", function(){
+
+    countDown(time);
     
     document.getElementById("start-screen").className ="hide";
     document.getElementById("questions").className ="";
@@ -47,9 +47,13 @@ document.getElementById('start').addEventListener("click", function(){
         // check if the answer is correct
         listItem.addEventListener("click", function() {
             if(quizQuestions[index].choices[i] === quizQuestions[index].correctAnswer) {
-                console.log("ohye");
+                userScore++;
+                console.log("Your score is " + userScore);
             } else {
-                console.log("ohno");
+
+                // if wrong, time - 10s
+                time = time - 10;
+                console.log(time);
             };   
         });
 
