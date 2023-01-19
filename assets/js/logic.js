@@ -50,7 +50,7 @@ function qDisplay(index) {
 
         // add event listener to all the buttons (choices)
         buttons.addEventListener('click', function(e) {
-            if (e.target.innerText === quizQuestions[index].correctAnswer) {
+            if (e.target.innerText === (i+1) + '. ' + quizQuestions[index].correctAnswer) {
                 // if answer is correct, score + 1
                 userScore++ ;
                 // play audio
